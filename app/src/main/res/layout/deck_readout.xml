@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Top-bar readout for one deck: colour bar, title, BPM and the KEY / SLIP / Q toggles. Tap the readout to load. Colours set in code. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="5dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/deck_a" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="No track"
+        android:textSize="@dimen/title_sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvBpm"
+        style="@style/Readout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="--.-"
+        android:textColor="@color/deck_a"
+        android:textSize="@dimen/bpm_sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnKey"
+        style="@style/Pad"
+        android:layout_width="@dimen/toggle_w"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:text="KEY"
+        android:textSize="10sp"
+        app:cornerRadius="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSlip"
+        style="@style/Pad"
+        android:layout_width="@dimen/toggle_w"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:text="SLIP"
+        android:textSize="10sp"
+        app:cornerRadius="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnQuant"
+        style="@style/Pad"
+        android:layout_width="@dimen/toggle_w"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:text="Q"
+        android:textSize="10sp"
+        app:cornerRadius="8dp" />
+</LinearLayout>

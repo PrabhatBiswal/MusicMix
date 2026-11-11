@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="topbar_h">52dp</dimen>
+    <dimen name="toggle_w">56dp</dimen>
+    <dimen name="transport_h">64dp</dimen>
+    <dimen name="tabs_h">48dp</dimen>
+    <dimen name="tempo_w">56dp</dimen>
+    <dimen name="mixer_w">360dp</dimen>
+    <dimen name="knob">56dp</dimen>
+    <dimen name="fader_w">56dp</dimen>
+    <dimen name="xfader_h">56dp</dimen>
+    <dimen name="waves_min">140dp</dimen>
+    <dimen name="load_list_h">360dp</dimen>
+    <dimen name="pad_sp">16sp</dimen>
+    <dimen name="label_sp">12sp</dimen>
+    <dimen name="tab_sp">14sp</dimen>
+    <dimen name="readout_sp">20sp</dimen>
+    <dimen name="title_sp">17sp</dimen>
+    <dimen name="bpm_sp">22sp</dimen>
+</resources>

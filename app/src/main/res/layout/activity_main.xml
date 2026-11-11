@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ground"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <!-- Top bar: deck A readout + toggles, master block, deck B readout + toggles -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbar_h"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/readoutA"
+            layout="@layout/deck_readout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="@dimen/mixer_w"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRec"
+                style="@style/Pad"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="56dp"
+                android:paddingHorizontal="10dp"
+                android:text="● REC"
+                android:textColor="@color/kill"
+                android:textSize="10sp"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/kill_tint" />
+
+            <!-- Headphone cue blend (DUAL mode) and the master meters -->
+            <com.prabhat.djmix.ui.KnobView
+                android:id="@+id/mixKnob"
+                android:layout_width="@dimen/toggle_w"
+                android:layout_height="@dimen/toggle_w"
+                android:layout_marginStart="8dp" />
+
+            <com.prabhat.djmix.ui.MeterView
+                android:id="@+id/masterL"
+                android:layout_width="6dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="6dp" />
+
+            <com.prabhat.djmix.ui.MeterView
+                android:id="@+id/masterR"
+                android:layout_width="6dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="2dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSplit"
+                style="@style/Pad"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="52dp"
+                android:paddingHorizontal="8dp"
+                android:text="SPLIT"
+                android:textSize="10sp"
+                app:cornerRadius="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSharp"
+                style="@style/Pad"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:minWidth="44dp"
+                android:paddingHorizontal="8dp"
+                android:text="CUT"
+                android:textSize="10sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/readoutB"
+            layout="@layout/deck_readout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Stacked waveforms: drag a lane to nudge (playing) or scratch (paused); tap the strip under it to seek.
+         The prep-queue status floats in the corner. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp">
+
+        <com.prabhat.djmix.ui.DualWaveformView
+            android:id="@+id/waves"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/waves_min" />
+
+        <TextView
+            android:id="@+id/tvQueue"
+            style="@style/Readout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="6dp"
+            android:background="@drawable/field"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="↓ 1 · 40%"
+            android:textColor="@color/muted"
+            android:textSize="10sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Decks and mixer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/deckA"
+            layout="@layout/deck_panel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <!-- Mixer: EQ + filter knob column, fader and meter per channel; headphone CUE buttons flank the crossfader -->
+        <LinearLayout
+            android:id="@+id/mixer"
+            android:layout_width="@dimen/mixer_w"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/knobsA"
+                    android:layout_width="@dimen/knob"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" />
+
+                <com.prabhat.djmix.ui.VFaderView
+                    android:id="@+id/faderA"
+                    android:layout_width="@dimen/fader_w"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp" />
+
+                <com.prabhat.djmix.ui.MeterView
+                    android:id="@+id/meterA"
+                    android:layout_width="6dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp" />
+
+                <!-- Headphone level, in the gap between the channels just above the CUE buttons -->
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.prabhat.djmix.ui.KnobView
+                        android:id="@+id/phonesKnob"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/knob"
+                        android:layout_gravity="bottom" />
+                </FrameLayout>
+
+                <com.prabhat.djmix.ui.MeterView
+                    android:id="@+id/meterB"
+                    android:layout_width="6dp"
+                    android:layout_height="match_parent" />
+
+                <com.prabhat.djmix.ui.VFaderView
+                    android:id="@+id/faderB"
+                    android:layout_width="@dimen/fader_w"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp" />
+
+                <LinearLayout
+                    android:id="@+id/knobsB"
+                    android:layout_width="@dimen/knob"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/xfader_h"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPflA"
+                    style="@style/Pad"
+                    android:layout_width="@dimen/xfader_h"
+                    android:layout_height="match_parent"
+                    android:text="CUE"
+                    android:textSize="10sp"
+                    app:cornerRadius="10dp" />
+
+                <SeekBar
+                    android:id="@+id/sbCross"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="6dp"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressTint="@color/border_strong"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/thumb" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPflB"
+                    style="@style/Pad"
+                    android:layout_width="@dimen/xfader_h"
+                    android:layout_height="match_parent"
+                    android:text="CUE"
+                    android:textSize="10sp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/deckB"
+            layout="@layout/deck_panel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

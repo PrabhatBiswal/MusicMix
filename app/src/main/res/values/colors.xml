@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design tokens (DJ-CONSOLE design canvas) -->
+    <color name="ground">#0F1115</color>
+    <color name="surface">#171A1F</color>
+    <color name="control">#22262D</color>
+    <color name="control_dim">#1B1F25</color>
+    <color name="border">#30363F</color>
+    <color name="border_strong">#3A4049</color>
+    <color name="text">#E7E9ED</color>
+    <color name="muted">#8E96A1</color>
+    <color name="deck_a">#37C6D6</color>
+    <color name="deck_a_tint">#15262A</color>
+    <color name="deck_a_dim">#1E7F8A</color>
+    <color name="deck_b">#F5A524</color>
+    <color name="deck_b_tint">#2A2113</color>
+    <color name="deck_b_dim">#9A6A1C</color>
+    <color name="loop">#45D483</color>
+    <color name="loop_tint">#15291D</color>
+    <color name="kill">#FF4D4D</color>
+    <color name="kill_tint">#2A1B1B</color>
+    <color name="meter_ok">#45D483</color>
+    <color name="meter_hot">#F5A524</color>
+    <color name="meter_clip">#FF4D4D</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phone (landscape, 360-411 dp tall, immersive). Every touch target is 40 dp or more, performance controls 48 dp.
+         Tablets override in values-sw600dp; phones with 400 dp+ of height get bigger knobs from values-h400dp. -->
+    <dimen name="topbar_h">40dp</dimen>
+    <dimen name="toggle_w">40dp</dimen>
+    <dimen name="transport_h">48dp</dimen>
+    <dimen name="tabs_h">40dp</dimen>
+    <dimen name="tempo_w">40dp</dimen>
+    <dimen name="mixer_w">240dp</dimen>
+    <dimen name="knob">40dp</dimen>
+    <dimen name="fader_w">40dp</dimen>
+    <dimen name="xfader_h">44dp</dimen>
+    <dimen name="waves_min">64dp</dimen>
+    <dimen name="load_list_h">150dp</dimen>
+    <dimen name="pad_sp">11sp</dimen>
+    <dimen name="label_sp">9sp</dimen>
+    <dimen name="tab_sp">11sp</dimen>
+    <dimen name="readout_sp">13sp</dimen>
+    <dimen name="title_sp">12sp</dimen>
+    <dimen name="bpm_sp">14sp</dimen>
+</resources>

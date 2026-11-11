@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 400 dp or more of height (Galaxy A04s in landscape): room for full-size knobs. -->
+    <dimen name="knob">44dp</dimen>
+    <dimen name="load_list_h">200dp</dimen>
+</resources>
