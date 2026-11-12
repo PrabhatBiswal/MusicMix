@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -126,7 +127,12 @@ fun LoadScreen(host: LoadHost, deck: String, close: () -> Unit, vm: LoadViewMode
                 else if (s.filters.tab == Tab.CLOUD && !s.invited) NotInvitedCard()
                 else {
                     Header()
-                    LazyColumn(Modifier.weight(1f).padding(top = 4.dp)) {
+                    // A new tab, playlist, sort or search starts its list at the top. One list state for every filter
+                    // would not: LazyColumn keeps the first visible row's key in view, so after NEW re-sorts, the list
+                    // jumps to wherever that track landed, and the rows above it are hidden. filters and tracks come in
+                    // the same UiState, so the fresh state meets the new list on its first layout (no jump, no flicker).
+                    val listState = rememberSaveable(s.filters, saver = LazyListState.Saver) { LazyListState() }
+                    LazyColumn(Modifier.weight(1f).padding(top = 4.dp), state = listState) {
                         if (s.filters.tab == Tab.LIBRARY) {
                             items(s.jobs, key = { "job:" + it.vid }) { j -> JobRow(j) { vm.retry(j.vid) } }
                             items(s.tracks, key = { it.entry.vid }) { t ->
