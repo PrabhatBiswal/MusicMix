@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Themed icon (Android 13+): both discs in one ink; even-odd cuts out the overlap and spindle holes. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M25,54a18,18 0,1 0,36 0a18,18 0,1 0,-36 0zM47,54a18,18 0,1 0,36 0a18,18 0,1 0,-36 0zM40.8,54a2.2,2.2 0,1 0,4.4 0a2.2,2.2 0,1 0,-4.4 0zM62.8,54a2.2,2.2 0,1 0,4.4 0a2.2,2.2 0,1 0,-4.4 0z" />
+</vector>
